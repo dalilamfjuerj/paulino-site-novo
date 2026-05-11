@@ -281,7 +281,7 @@ function Index() {
             {parceiros.map((p) => (
               <div
                 key={p.name}
-                className="group relative h-28 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 transition flex items-center justify-center p-6"
+                className="group relative h-28 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 transition flex items-center justify-center p-6 px-[10px] py-[10px]"
               >
                 <img
                   src={p.src}
