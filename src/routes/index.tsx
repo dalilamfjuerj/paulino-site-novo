@@ -102,39 +102,48 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        {/* Background image full-bleed, centered */}
-        <div className="absolute inset-0">
+      <section id="top" className="relative md:min-h-screen flex flex-col md:items-center md:justify-center overflow-hidden pt-16">
+        {/* MOBILE: photo at top with gradient fade */}
+        <div className="md:hidden relative w-full h-[55vh] -mt-16 pt-16">
+          <img
+            src={drImg}
+            alt="Dr. Fernando Paulino"
+            className="absolute inset-0 w-full h-full object-cover object-top select-none"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-b from-transparent via-background/70 to-background" />
+        </div>
+
+        {/* DESKTOP: full-bleed background */}
+        <div className="hidden md:block absolute inset-0">
           <img
             src={heroImg}
             alt="Dr. Fernando Paulino"
             className="absolute inset-0 w-full h-full object-cover object-center select-none"
           />
-          {/* Dark vignette + teal glow overlays */}
           <div className="absolute inset-0 bg-background/70" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.10_0.025_220/0.7)_80%)]" />
         </div>
 
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-16 md:mt-0 pb-12 md:pb-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur text-primary text-xs uppercase tracking-[0.25em] mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur text-primary text-[10px] md:text-xs uppercase tracking-[0.25em] mb-6 md:mb-8">
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
               Advocacia de Excelência
             </div>
-            <h1 className="font-display text-5xl md:text-7xl leading-[1.05] mb-8 text-foreground">
+            <h1 className="font-display text-3xl md:text-7xl leading-[1.1] md:leading-[1.05] mb-6 md:mb-8 text-foreground">
               Conheça o escritório especializado que já atendeu mais de{" "}
               <span className="text-gradient-gold">5.000 clientes</span>{" "}
               com excelência
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-xl text-muted-foreground mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
               Na hora de defender seus direitos, experiência, estratégia e confiança fazem toda a diferença.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 md:mb-12">
               <a href={WHATSAPP} target="_blank" rel="noopener" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[image:var(--gradient-gold)] text-gold-foreground font-semibold tracking-wide shadow-elegant hover:scale-[1.03] transition">
                 <MessageCircle size={18} />
                 Falar com um advogado
@@ -148,8 +157,8 @@ function Index() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-muted-foreground/60 text-xs uppercase tracking-[0.3em]">
+        {/* Scroll indicator — desktop only */}
+        <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-muted-foreground/60 text-xs uppercase tracking-[0.3em]">
           ↓ Role para baixo
         </div>
       </section>
