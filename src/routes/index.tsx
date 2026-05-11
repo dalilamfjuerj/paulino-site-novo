@@ -103,22 +103,21 @@ function Index() {
         </div>
       </header>
 
-      {/* HERO — full-bleed background photo with text overlay */}
-      <section id="top" className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background photo */}
-        <div className="absolute inset-0">
+      {/* HERO — full-width photo at top, gradient fade, text below */}
+      <section id="top" className="relative overflow-hidden">
+        {/* Full-width photo */}
+        <div className="relative w-full h-[70vh] md:h-[85vh]">
           <img
             src={heroImg}
             alt="Dr. Fernando Paulino"
-            className="absolute inset-0 w-full h-full object-cover object-center select-none"
+            className="absolute inset-0 w-full h-full object-cover object-top select-none"
           />
-          {/* Subtle darkening to keep text readable */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background/80" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,oklch(0.10_0.025_220/0.6)_90%)]" />
+          {/* Gradient fade into background */}
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-transparent via-background/80 to-background pointer-events-none" />
         </div>
 
-        {/* Text overlay */}
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center pt-32 pb-16 md:pt-40 md:pb-24">
+        {/* Text below the photo */}
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-24 md:-mt-40 pb-16 md:pb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,12 +127,12 @@ function Index() {
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
               Advocacia de Excelência
             </div>
-            <h1 className="font-display text-3xl md:text-6xl leading-[1.1] md:leading-[1.05] mb-6 md:mb-8 text-foreground drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]">
+            <h1 className="font-display text-3xl md:text-6xl leading-[1.1] md:leading-[1.05] mb-6 md:mb-8 text-foreground">
               Conheça o escritório especializado que já atendeu mais de{" "}
               <span className="text-gradient-gold">5.000 clientes</span>{" "}
               com excelência
             </h1>
-            <p className="text-base md:text-xl text-foreground/90 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
+            <p className="text-base md:text-xl text-muted-foreground mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
               Na hora de defender seus direitos, experiência, estratégia e confiança fazem toda a diferença.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 md:mb-12">
@@ -143,7 +142,7 @@ function Index() {
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition" />
               </a>
             </div>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center text-sm text-foreground/80">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center text-sm text-muted-foreground">
               <span className="flex items-center gap-2"><MapPin size={16} className="text-primary" /> Atendimento presencial e online para todo o Brasil</span>
               <span className="flex items-center gap-2"><Phone size={16} className="text-primary" /> Fale agora com nossa equipe jurídica</span>
             </div>
