@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import heroImg from "@/assets/hero-paulino.png";
 import drImg from "@/assets/dr-paulino.png";
+import escritorioVogue from "@/assets/escritorio-vogue.jpg";
+import escritorioCampoGrande from "@/assets/escritorio-campo-grande.jpg";
 import paulinoLogo from "@/assets/paulino-logo.png";
 import brasilMap from "@/assets/brasil-map.png";
 import dep1 from "@/assets/depoimentos/d1.png";
@@ -102,9 +104,9 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative md:min-h-screen flex flex-col md:items-center md:justify-center overflow-hidden pt-16">
-        {/* MOBILE: photo at top with gradient fade */}
-        <div className="md:hidden relative w-full h-[55vh] -mt-16 pt-16">
+      <section id="top" className="relative overflow-hidden pt-16">
+        {/* Photo on top with gradient fade */}
+        <div className="relative w-full h-[55vh] md:h-[70vh] -mt-16 pt-16">
           <img
             src={drImg}
             alt="Dr. Fernando Paulino"
@@ -113,19 +115,8 @@ function Index() {
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-b from-transparent via-background/70 to-background" />
         </div>
 
-        {/* DESKTOP: full-bleed background */}
-        <div className="hidden md:block absolute inset-0">
-          <img
-            src={heroImg}
-            alt="Dr. Fernando Paulino"
-            className="absolute inset-0 w-full h-full object-cover object-center select-none"
-          />
-          <div className="absolute inset-0 bg-background/70" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.10_0.025_220/0.7)_80%)]" />
-        </div>
-
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-16 md:mt-0 pb-12 md:pb-0">
+        {/* Text below the photo */}
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-16 md:-mt-24 pb-16 md:pb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -135,7 +126,7 @@ function Index() {
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
               Advocacia de Excelência
             </div>
-            <h1 className="font-display text-3xl md:text-7xl leading-[1.1] md:leading-[1.05] mb-6 md:mb-8 text-foreground">
+            <h1 className="font-display text-3xl md:text-6xl leading-[1.1] md:leading-[1.05] mb-6 md:mb-8 text-foreground">
               Conheça o escritório especializado que já atendeu mais de{" "}
               <span className="text-gradient-gold">5.000 clientes</span>{" "}
               com excelência
@@ -155,11 +146,6 @@ function Index() {
               <span className="flex items-center gap-2"><Phone size={16} className="text-primary" /> Fale agora com nossa equipe jurídica</span>
             </div>
           </motion.div>
-        </div>
-
-        {/* Scroll indicator — desktop only */}
-        <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-muted-foreground/60 text-xs uppercase tracking-[0.3em]">
-          ↓ Role para baixo
         </div>
       </section>
 
@@ -370,6 +356,57 @@ function Index() {
               <span>contato@paulinoadvocacia.com</span>
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* ESCRITÓRIOS */}
+      <section className="py-24 bg-white text-neutral-900 border-t border-neutral-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="text-xs uppercase tracking-[0.3em] text-gold">Onde estamos</span>
+            <h2 className="font-display text-3xl md:text-5xl mt-4 text-neutral-900">
+              Nossos <span className="text-gradient-gold">escritórios</span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-10">
+            {[
+              {
+                title: "Escritório na Vogue Square",
+                addr: "Av. das Américas, nº 8585, sala 408 — Barra da Tijuca (Vogue Square), Rio de Janeiro — CEP: 22793-081",
+                img: escritorioVogue,
+                map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.626775815616!2d-43.396071!3d-23.000747999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bdb9c8ccf6ae3%3A0x1cbc132a4be5de15!2sVogue%20Square!5e0!3m2!1spt-BR!2sbr!4v1778522241229!5m2!1spt-BR!2sbr",
+              },
+              {
+                title: "Escritório Campo Grande",
+                addr: "Av. Maria Teresa nº 75, sala 724, 201 e 234, Campo Grande — Rio de Janeiro — CEP: 23050-160",
+                img: escritorioCampoGrande,
+                map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.2443956777024!2d-43.56570180000001!3d-22.9043548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9be3f94c1d0b65%3A0x28b988c2598ef9d5!2sPaulino%20Advocacia!5e0!3m2!1spt-BR!2sbr!4v1778522395730!5m2!1spt-BR!2sbr",
+              },
+            ].map((o) => (
+              <div key={o.title} className="rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-sm">
+                <img src={o.img} alt={o.title} className="w-full h-56 object-cover" loading="lazy" />
+                <div className="p-6">
+                  <h3 className="font-display text-2xl mb-2 text-neutral-900">{o.title}</h3>
+                  <p className="text-sm text-neutral-600 flex gap-2 mb-4">
+                    <MapPin size={16} className="text-gold shrink-0 mt-0.5" />
+                    <span>{o.addr}</span>
+                  </p>
+                  <div className="rounded-xl overflow-hidden border border-neutral-200">
+                    <iframe
+                      src={o.map}
+                      width="100%"
+                      height="260"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={o.title}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
