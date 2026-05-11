@@ -433,7 +433,7 @@ function DepoimentosSection() {
             <img
               src={brasilMap}
               alt="Mapa do Brasil — atendimento em todo o território nacional"
-              className="relative w-full max-w-md mx-auto lg:mx-0 drop-shadow-xl"
+              className="relative w-full max-w-md mx-auto lg:mx-0"
             />
             <p className="font-display text-2xl md:text-3xl mt-6 text-center lg:text-left text-neutral-900">
               Atendimentos em <span className="text-gradient-gold">todo Brasil</span>
