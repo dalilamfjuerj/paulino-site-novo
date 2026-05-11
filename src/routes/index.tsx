@@ -465,7 +465,7 @@ function DepoimentosSection() {
         {/* LEFT: Map + Title */}
         <div className="text-center lg:text-left">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-4">
-            <span className="text-gradient-gold">Depoimentos</span>{" "}
+            <span className="text-gradient-gold">Alguns depoimentos</span>{" "}
             <span className="text-neutral-900">de quem já passou pelo nosso escritório!</span>
           </h2>
           <div className="relative mt-8">
