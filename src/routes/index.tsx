@@ -444,29 +444,17 @@ function DepoimentosSection() {
 
         {/* RIGHT: Carousel */}
         <div className="relative">
-          <div className="flex items-center justify-center gap-4 md:gap-6 min-h-[560px]">
-            {visible.map((d, i) => {
-              const isCenter = i === 1;
-              return (
-                <motion.div
-                  key={`${d.name}-${index}-${i}`}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{
-                    opacity: isCenter ? 1 : 0.4,
-                    scale: isCenter ? 1 : 0.82,
-                  }}
-                  transition={{ duration: 0.45 }}
-                  className={`relative rounded-2xl overflow-hidden border ${
-                    isCenter
-                      ? "border-neutral-300 shadow-elegant z-10"
-                      : "border-neutral-200 hidden sm:block"
-                  }`}
-                  style={{ width: isCenter ? 280 : 200 }}
-                >
-                  <img src={d.src} alt={`Depoimento ${d.name}`} className="block w-full h-auto" />
-                </motion.div>
-              );
-            })}
+          <div className="flex items-center justify-center min-h-[520px]">
+            <motion.div
+              key={`${current.name}-${index}`}
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="relative rounded-2xl overflow-hidden border border-neutral-300 shadow-elegant"
+              style={{ width: "100%", maxWidth: 420 }}
+            >
+              <img src={current.src} alt={`Depoimento ${current.name}`} className="block w-full h-auto" />
+            </motion.div>
           </div>
 
           {/* Controls */}
