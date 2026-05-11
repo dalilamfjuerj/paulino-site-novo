@@ -91,10 +91,10 @@ function Index() {
             <img src={paulinoLogo} alt="Paulino Advocacia" className="h-10 w-auto" />
             <span className="sr-only">Paulino Advocacia</span>
           </a>
-          <nav className="hidden md:flex gap-8 text-sm text-muted-foreground">
+          <nav className="flex gap-3 md:gap-8 text-[11px] md:text-sm text-muted-foreground">
             <a href="#sobre" className="hover:text-primary transition">Sobre</a>
             <a href="#areas" className="hover:text-primary transition">Áreas</a>
-            <a href="#diferencial" className="hover:text-primary transition">Diferenciais</a>
+            <a href="#diferencial" className="hover:text-primary transition hidden sm:inline">Diferenciais</a>
             <a href="#contato" className="hover:text-primary transition">Contato</a>
           </nav>
           <a href={WHATSAPP} target="_blank" rel="noopener" className="hidden sm:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-teal-gradient text-primary-foreground font-medium hover:shadow-glow transition">
