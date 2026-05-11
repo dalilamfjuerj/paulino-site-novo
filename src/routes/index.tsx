@@ -264,6 +264,9 @@ function Index() {
         </div>
       </section>
 
+      {/* EQUIPE */}
+      <TeamSection />
+
       {/* DEPOIMENTOS */}
       <DepoimentosSection />
 
