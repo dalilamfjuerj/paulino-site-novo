@@ -553,7 +553,60 @@ function TeamSection() {
           <p className="text-muted-foreground">Clique em um membro para ver a trajetória completa.</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {/* MOBILE: stacked with inline bio */}
+        <div className="sm:hidden space-y-4">
+          {equipe.map((m, i) => {
+            const active = openIdx === i;
+            return (
+              <div key={m.name}>
+                <button
+                  onClick={() => setOpenIdx(active ? null : i)}
+                  className={`w-full text-left rounded-2xl p-5 border transition-all ${
+                    active
+                      ? "border-primary bg-card shadow-glow"
+                      : "border-border bg-card/50"
+                  }`}
+                  aria-expanded={active}
+                >
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={m.img}
+                      alt={m.name}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-primary/30 shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-lg">{m.name}</h3>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-primary mt-1">{m.role}</p>
+                    </div>
+                    <div className="text-xs text-muted-foreground shrink-0">
+                      {active ? "−" : "+"}
+                    </div>
+                  </div>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: active ? "auto" : 0, opacity: active ? 1 : 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-3 rounded-2xl border border-primary/40 bg-card/60 p-5">
+                    <ul className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                      {m.bio.map((b, j) => (
+                        <li key={j} className="flex gap-3">
+                          <Check size={14} className="text-primary shrink-0 mt-1" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* DESKTOP: grid + shared panel */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {equipe.map((m, i) => {
             const active = openIdx === i;
             return (
@@ -593,7 +646,7 @@ function TeamSection() {
           initial={false}
           animate={{ height: openIdx !== null ? "auto" : 0, opacity: openIdx !== null ? 1 : 0 }}
           transition={{ duration: 0.4 }}
-          className="overflow-hidden"
+          className="overflow-hidden hidden sm:block"
         >
           {openIdx !== null && (
             <div className="rounded-2xl border border-primary/40 bg-card/60 p-8 md:p-10">
