@@ -33,6 +33,18 @@ const depoimentos = [
   { src: dep10, name: "Adriana" },
 ];
 
+import parceiroSeven from "@/assets/parceiros/seven.png";
+import parceiroBitribut from "@/assets/parceiros/bitribut.png";
+import parceiroEfagro from "@/assets/parceiros/efagro.png";
+import parceiroHub from "@/assets/parceiros/hub-botafogo.png";
+
+const parceiros = [
+  { src: parceiroHub, name: "Hub Botafogo" },
+  { src: parceiroEfagro, name: "EFAGRO" },
+  { src: parceiroBitribut, name: "Bitribut" },
+  { src: parceiroSeven, name: "Seven Ambiental" },
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -256,7 +268,33 @@ function Index() {
       <DepoimentosSection />
 
 
-      {/* CTA FINAL */}
+      {/* PARCEIROS */}
+      <section id="parceiros" className="py-20 border-y border-border/40 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-xs uppercase tracking-[0.3em] text-primary">Parceiros</span>
+            <h2 className="font-display text-3xl md:text-4xl mt-3">
+              Empresas que <span className="text-gradient-teal">confiam</span> em nosso trabalho
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {parceiros.map((p) => (
+              <div
+                key={p.name}
+                className="group relative h-28 rounded-2xl border border-border bg-background/60 hover:border-primary/50 hover:bg-background transition flex items-center justify-center p-6"
+              >
+                <img
+                  src={p.src}
+                  alt={p.name}
+                  className="max-h-16 max-w-full object-contain opacity-70 group-hover:opacity-100 transition"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contato" className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-hero opacity-80" />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
