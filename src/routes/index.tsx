@@ -413,12 +413,13 @@ function DepoimentosSection() {
   const prev = () => setIndex((i) => (i - 1 + total) % total);
   const next = () => setIndex((i) => (i + 1) % total);
 
-  // visible cards: previous, current, next
-  const visible = [
-    depoimentos[(index - 1 + total) % total],
-    depoimentos[index],
-    depoimentos[(index + 1) % total],
-  ];
+  // Auto-play
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % total), 4000);
+    return () => clearInterval(id);
+  }, [total]);
+
+  const current = depoimentos[index];
 
   return (
     <section className="py-28 bg-white text-neutral-900 relative overflow-hidden">
