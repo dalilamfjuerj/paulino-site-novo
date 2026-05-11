@@ -106,7 +106,7 @@ function Index() {
       {/* HERO — full-width photo at top, gradient fade, text below */}
       <section id="top" className="relative overflow-hidden pt-16 md:pt-0">
         {/* Full-width photo */}
-        <div className="relative w-full h-[54vh] min-h-[430px] md:h-[68vh] md:min-h-[560px]">
+        <div className="relative w-full h-[44vh] min-h-[360px] md:h-[68vh] md:min-h-[560px]">
           <img
             src={heroImg}
             alt="Dr. Fernando Paulino"
@@ -117,7 +117,7 @@ function Index() {
         </div>
 
         {/* Text below the photo */}
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-10 md:-mt-32 pb-16 md:pb-24">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-16 md:-mt-32 pb-10 md:pb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
