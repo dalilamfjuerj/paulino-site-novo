@@ -253,31 +253,8 @@ function Index() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="py-28">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-xs uppercase tracking-[0.3em] text-primary">Depoimentos</span>
-            <h2 className="font-display text-4xl md:text-5xl mt-4 mb-4">A confiança de quem já contou com nossa equipe</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Mais do que processos, colecionamos histórias de clientes que encontraram segurança, direcionamento e suporte jurídico em momentos importantes.</p>
-          </div>
+      <DepoimentosSection />
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { n: "Marina S.", r: "Recuperei minha aposentadoria após anos de espera. Atendimento humano e técnico impecável." },
-              { n: "Carlos R.", r: "Renegociação bancária resolvida com clareza. Equipe atenciosa e estratégica do início ao fim." },
-              { n: "Ana P.", r: "Suporte jurídico empresarial completo. Trouxe segurança para todas as decisões da minha empresa." },
-            ].map((t) => (
-              <div key={t.n} className="p-7 rounded-2xl border border-border bg-card/60 hover:shadow-elegant transition">
-                <div className="flex gap-1 mb-4 text-gold">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" strokeWidth={0} />)}
-                </div>
-                <p className="text-foreground/90 leading-relaxed mb-6">"{t.r}"</p>
-                <div className="text-sm text-muted-foreground">— {t.n}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA FINAL */}
       <section id="contato" className="py-28 relative overflow-hidden">
