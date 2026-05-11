@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Paulino Advocacia" },
+      { name: "description", content: "Nossa equipe está pronta para analisar seu caso e apresentar a melhor estratégia jurídica para você." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Paulino Advocacia" },
+      { property: "og:description", content: "Nossa equipe está pronta para analisar seu caso e apresentar a melhor estratégia jurídica para você." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Paulino Advocacia" },
+      { name: "twitter:description", content: "Nossa equipe está pronta para analisar seu caso e apresentar a melhor estratégia jurídica para você." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/O9X7YsSStWbtBMy2y2h5P7CGdms1/social-images/social-1778523664266-ChatGPT_Image_11_de_mai._de_2026,_11_08_21.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/O9X7YsSStWbtBMy2y2h5P7CGdms1/social-images/social-1778523664266-ChatGPT_Image_11_de_mai._de_2026,_11_08_21.webp" },
     ],
     links: [
       {
