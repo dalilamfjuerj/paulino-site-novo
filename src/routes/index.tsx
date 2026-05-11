@@ -264,6 +264,9 @@ function Index() {
         </div>
       </section>
 
+      {/* EQUIPE */}
+      <TeamSection />
+
       {/* DEPOIMENTOS */}
       <DepoimentosSection />
 
@@ -435,6 +438,145 @@ function DepoimentosSection() {
             </button>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+// ========================= EQUIPE =========================
+import teamFernando from "@/assets/equipe/fernando.png";
+import teamIngrid from "@/assets/equipe/ingrid.png";
+import teamSilvia from "@/assets/equipe/silvia.png";
+import teamRennan from "@/assets/equipe/rennan.png";
+
+const equipe = [
+  {
+    name: "Fernando Paulino",
+    role: "Presidente do escritório",
+    img: teamFernando,
+    bio: [
+      "Advogado militante na área previdenciária há mais de 18 anos.",
+      "Formou-se em Direito na Universidade Veiga de Almeida (UVA) em 2005.",
+      "Pós-graduado em Direito Previdenciário (INFOC), de 2016 a julho de 2018.",
+      "Militar do Exército Brasileiro pelo período de 2 anos (1994 a 1996).",
+      "Curso de Processo Tributário prático específico para Grandes Teses Tributárias, de fevereiro a março de 2020 (IBIJUS).",
+      "Curso de aperfeiçoamento em matéria previdenciária no XVI Congresso Brasileiro de Direito Previdenciário em Foz do Iguaçu — PR, pelo IBDP (setembro de 2022).",
+      "Cursando Pós-Graduação em Recuperação de Crédito Tributário (IBIJUS).",
+    ],
+  },
+  {
+    name: "Ingrid Castelo",
+    role: "Coordenadora Administrativa",
+    img: teamIngrid,
+    bio: [
+      "Formada em Engenharia de Produção (Estácio de Sá, desde 2019).",
+      "Pós-graduanda em Gestão de Pessoas / Segurança do Trabalho (Faveni).",
+    ],
+  },
+  {
+    name: "Silvia Pereira",
+    role: "Advogada Internacional",
+    img: teamSilvia,
+    bio: [
+      "Mestre em Direito Internacional (EUA), advogada na Inglaterra e no País de Gales, inscrita na Solicitors Regulation Authority (SRA) e na Law Society — órgãos reguladores dos advogados ingleses.",
+      "Habilitada pela Ordem dos Advogados de Portugal e do Brasil.",
+      "Com 20 anos de experiência jurídica, atua no Reino Unido, em todo o continente europeu e na América do Sul, com ênfase em Direito Internacional Empresarial e Contratos.",
+      "Membro da EAPIL — European Association of Private International Law.",
+    ],
+  },
+  {
+    name: "Rennan Lima",
+    role: "Advogado",
+    img: teamRennan,
+    bio: [
+      "Graduação em Direito pela Universidade Estácio de Sá (2020).",
+      "Especialização em Advocacia Cível pela Fundação Escola Superior do Ministério Público — RS (2023).",
+      "Experiência na área de Direito Previdenciário.",
+      "Graduação em andamento em Ciências Contábeis pela Universidade Estácio de Sá (UNESA).",
+    ],
+  },
+];
+
+function TeamSection() {
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  return (
+    <section id="equipe" className="py-28 border-t border-border/40">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs uppercase tracking-[0.3em] text-primary">Equipe</span>
+          <h2 className="font-display text-4xl md:text-5xl mt-4 mb-4">
+            Conheça os profissionais que fazem parte da{" "}
+            <span className="text-gradient-teal">nossa equipe</span>
+          </h2>
+          <p className="text-muted-foreground">Clique em um membro para ver a trajetória completa.</p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {equipe.map((m, i) => {
+            const active = openIdx === i;
+            return (
+              <button
+                key={m.name}
+                onClick={() => setOpenIdx(active ? null : i)}
+                className={`group text-left rounded-2xl p-6 border transition-all ${
+                  active
+                    ? "border-primary bg-card shadow-glow -translate-y-1"
+                    : "border-border bg-card/50 hover:border-primary/50 hover:-translate-y-1"
+                }`}
+                aria-expanded={active}
+              >
+                <div className="relative mb-4">
+                  <div
+                    className={`absolute inset-0 rounded-full blur-2xl transition ${
+                      active ? "bg-teal-gradient opacity-40" : "bg-primary/10 opacity-0 group-hover:opacity-30"
+                    }`}
+                  />
+                  <img
+                    src={m.img}
+                    alt={m.name}
+                    className="relative w-32 h-32 mx-auto rounded-full object-cover border-2 border-primary/30"
+                  />
+                </div>
+                <h3 className="font-display text-xl text-center">{m.name}</h3>
+                <p className="text-xs uppercase tracking-[0.2em] text-primary text-center mt-1">{m.role}</p>
+                <div className="text-center mt-3 text-xs text-muted-foreground">
+                  {active ? "− Recolher" : "+ Ver perfil"}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        <motion.div
+          initial={false}
+          animate={{ height: openIdx !== null ? "auto" : 0, opacity: openIdx !== null ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
+          className="overflow-hidden"
+        >
+          {openIdx !== null && (
+            <div className="rounded-2xl border border-primary/40 bg-card/60 p-8 md:p-10">
+              <div className="flex items-center gap-4 mb-6">
+                <img
+                  src={equipe[openIdx].img}
+                  alt={equipe[openIdx].name}
+                  className="size-16 rounded-full object-cover border border-primary/30"
+                />
+                <div>
+                  <h3 className="font-display text-2xl">{equipe[openIdx].name}</h3>
+                  <p className="text-sm text-gold">{equipe[openIdx].role}</p>
+                </div>
+              </div>
+              <ul className="space-y-3 text-muted-foreground leading-relaxed">
+                {equipe[openIdx].bio.map((b, j) => (
+                  <li key={j} className="flex gap-3">
+                    <Check size={16} className="text-primary shrink-0 mt-1" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </motion.div>
       </div>
     </section>
   );
