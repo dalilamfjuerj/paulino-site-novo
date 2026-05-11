@@ -63,61 +63,72 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative min-h-screen bg-hero pt-16">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img src={heroImg} alt="Dr. Fernando Paulino" className="absolute right-0 bottom-0 h-[95%] w-auto object-contain object-bottom select-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+      <section id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+        {/* Background image full-bleed, centered */}
+        <div className="absolute inset-0">
+          <img
+            src={heroImg}
+            alt="Dr. Fernando Paulino"
+            className="absolute inset-0 w-full h-full object-cover object-center select-none"
+          />
+          {/* Dark vignette + teal glow overlays */}
+          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.10_0.025_220/0.7)_80%)]" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 pt-20 lg:pt-32 pb-24">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-2xl"
+            transition={{ duration: 0.9 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs uppercase tracking-[0.2em] mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur text-primary text-xs uppercase tracking-[0.25em] mb-8">
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
               Advocacia de Excelência
             </div>
-            <h1 className="font-display text-5xl md:text-7xl leading-[1.05] mb-6">
-              Conheça o escritório que já atendeu mais de{" "}
+            <h1 className="font-display text-5xl md:text-7xl leading-[1.05] mb-8 text-foreground">
+              Conheça o escritório especializado que já atendeu mais de{" "}
               <span className="text-gradient-teal">5.000 clientes</span>{" "}
               com excelência
             </h1>
-            <p className="text-lg text-muted-foreground mb-4 max-w-xl">
+            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
               Na hora de defender seus direitos, experiência, estratégia e confiança fazem toda a diferença.
             </p>
-            <ul className="text-sm text-muted-foreground space-y-2 mb-10">
-              <li className="flex items-center gap-2"><MapPin size={16} className="text-primary" /> Atendimento presencial e online para todo o Brasil</li>
-              <li className="flex items-center gap-2"><Phone size={16} className="text-primary" /> Fale agora com nossa equipe jurídica</li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <a href={WHATSAPP} target="_blank" rel="noopener" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-teal-gradient text-primary-foreground font-semibold shadow-glow hover:scale-[1.02] transition">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <a href={WHATSAPP} target="_blank" rel="noopener" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-teal-gradient text-primary-foreground font-semibold tracking-wide shadow-glow hover:scale-[1.03] transition">
+                <MessageCircle size={18} />
                 Falar com um advogado
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition" />
               </a>
-              <a href="#sobre" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-border hover:border-primary/60 hover:text-primary transition">
-                Conhecer o escritório
-              </a>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center text-sm text-muted-foreground">
+              <span className="flex items-center gap-2"><MapPin size={16} className="text-primary" /> Atendimento presencial e online para todo o Brasil</span>
+              <span className="flex items-center gap-2"><Phone size={16} className="text-primary" /> Fale agora com nossa equipe jurídica</span>
             </div>
           </motion.div>
+        </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border/50 mt-24 rounded-2xl overflow-hidden border border-border/50 backdrop-blur-sm">
-            {[
-              { v: "18+", l: "Anos de atuação" },
-              { v: "5.000+", l: "Clientes atendidos" },
-              { v: "8", l: "Áreas de atuação" },
-              { v: "2", l: "Unidades no RJ" },
-            ].map((s) => (
-              <div key={s.l} className="bg-card/80 p-6 text-center">
-                <div className="font-display text-4xl text-gradient-teal mb-1">{s.v}</div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">{s.l}</div>
-              </div>
-            ))}
-          </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-muted-foreground/60 text-xs uppercase tracking-[0.3em]">
+          ↓ Role para baixo
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section className="relative border-y border-border/40 bg-card/30">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4">
+          {[
+            { v: "18+", l: "Anos de atuação" },
+            { v: "5.000+", l: "Clientes atendidos" },
+            { v: "8", l: "Áreas de atuação" },
+            { v: "2", l: "Unidades no RJ" },
+          ].map((s) => (
+            <div key={s.l} className="p-8 text-center border-r last:border-r-0 border-border/40">
+              <div className="font-display text-4xl md:text-5xl text-gradient-teal mb-1">{s.v}</div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">{s.l}</div>
+            </div>
+          ))}
         </div>
       </section>
 
