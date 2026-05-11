@@ -273,24 +273,24 @@ function Index() {
 
 
       {/* PARCEIROS */}
-      <section id="parceiros" className="py-20 border-y border-border/40 bg-card/30">
+      <section id="parceiros" className="py-20 bg-white text-neutral-900">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-[0.3em] text-primary">Parceiros</span>
-            <h2 className="font-display text-3xl md:text-4xl mt-3">
-              Empresas que <span className="text-gradient-teal">confiam</span> em nosso trabalho
+            <span className="text-xs uppercase tracking-[0.3em] text-neutral-500">Parceiros</span>
+            <h2 className="font-display text-3xl md:text-4xl mt-3 text-neutral-900">
+              Empresas que <span className="text-gradient-gold">confiam</span> em nosso trabalho
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {parceiros.map((p) => (
               <div
                 key={p.name}
-                className="group relative h-28 rounded-2xl border border-border bg-background/60 hover:border-primary/50 hover:bg-background transition flex items-center justify-center p-6"
+                className="group relative h-28 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 transition flex items-center justify-center p-6"
               >
                 <img
                   src={p.src}
                   alt={p.name}
-                  className="max-h-16 max-w-full object-contain opacity-70 group-hover:opacity-100 transition"
+                  className="max-h-16 max-w-full object-contain opacity-80 group-hover:opacity-100 transition"
                   loading="lazy"
                 />
               </div>
