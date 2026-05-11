@@ -104,20 +104,20 @@ function Index() {
       </header>
 
       {/* HERO — full-width photo at top, gradient fade, text below */}
-      <section id="top" className="relative overflow-hidden">
+      <section id="top" className="relative overflow-hidden pt-16 md:pt-0">
         {/* Full-width photo */}
-        <div className="relative w-full h-[45vh] md:h-[60vh]">
+        <div className="relative w-full h-[54vh] min-h-[430px] md:h-[68vh] md:min-h-[560px]">
           <img
             src={heroImg}
             alt="Dr. Fernando Paulino"
-            className="absolute inset-0 w-full h-full object-cover object-top select-none"
+            className="absolute inset-0 w-full h-full object-cover object-[center_top] select-none"
           />
           {/* Gradient fade into background */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-transparent via-background/80 to-background pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent via-background/75 to-background pointer-events-none" />
         </div>
 
         {/* Text below the photo */}
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-24 md:-mt-40 pb-16 md:pb-24">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-10 md:-mt-32 pb-16 md:pb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,7 +127,7 @@ function Index() {
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
               Advocacia de Excelência
             </div>
-            <h1 className="font-display text-3xl md:text-6xl leading-[1.1] md:leading-[1.05] mb-6 md:mb-8 text-foreground">
+            <h1 className="font-display text-[2rem] md:text-6xl leading-[1.12] md:leading-[1.05] mb-6 md:mb-8 text-foreground">
               Conheça o escritório especializado que já atendeu mais de{" "}
               <span className="text-gradient-gold">5.000 clientes</span>{" "}
               com excelência
