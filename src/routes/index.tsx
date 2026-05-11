@@ -308,11 +308,58 @@ function Index() {
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Nossa equipe está pronta para analisar seu caso e apresentar a melhor estratégia jurídica para você.
           </p>
-          <a href={WHATSAPP} target="_blank" rel="noopener" className="inline-flex items-center gap-3 px-8 py-5 rounded-full bg-teal-gradient text-primary-foreground font-semibold text-lg shadow-glow hover:scale-[1.03] transition">
+
+          {/* Social icons */}
+          <div className="flex justify-center gap-3 mb-8">
+            {[
+              { Icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+              { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+              { Icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+              { Icon: MessageCircle, href: "https://wa.me/5521964523443?text=Oi%2C%20vim%20do%20site%20e%20queria%20mais%20informa%C3%A7%C3%B5es...", label: "WhatsApp" },
+            ].map(({ Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener"
+                aria-label={label}
+                className="size-12 rounded-full bg-card/80 border border-border hover:border-primary hover:text-primary hover:bg-card transition flex items-center justify-center"
+              >
+                <Icon size={20} />
+              </a>
+            ))}
+          </div>
+
+          {/* WhatsApp CTA */}
+          <a
+            href="https://wa.me/5521964523443?text=Oi%2C%20vim%20do%20site%20e%20queria%20mais%20informa%C3%A7%C3%B5es..."
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center justify-center gap-3 w-full max-w-md mx-auto px-8 py-5 rounded-xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold text-lg shadow-glow hover:scale-[1.02] transition"
+          >
             <MessageCircle size={22} />
-            Falar no WhatsApp
-            <ArrowRight size={20} />
+            Clique aqui e fale conosco por WhatsApp
           </a>
+
+          {/* Contact list */}
+          <ul className="mt-10 space-y-3 text-left max-w-md mx-auto text-foreground/90">
+            <li className="flex items-center gap-3">
+              <Phone size={18} className="text-primary shrink-0" />
+              <span>Fixo — (21) 3156-8582</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <MessageCircle size={18} className="text-primary shrink-0" />
+              <span>Previdência — (21) 96452-3443</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <MessageCircle size={18} className="text-primary shrink-0" />
+              <span>Outras áreas Jurídicas — (21) 97074-0653</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <Mail size={18} className="text-primary shrink-0" />
+              <span>contato@paulinoadvocacia.com</span>
+            </li>
+          </ul>
         </div>
       </section>
 
