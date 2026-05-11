@@ -368,9 +368,7 @@ function Index() {
       <footer className="border-t border-border/40 bg-card/40 pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12">
           <div>
-            <div className="font-display text-2xl mb-4">
-              <span className="text-gradient-teal">Paulino</span> Advocacia
-            </div>
+            <img src={paulinoLogo} alt="Paulino Advocacia" className="h-16 w-auto mb-4" />
             <p className="text-sm text-muted-foreground italic">"Compromisso com excelência, integridade e resultados."</p>
           </div>
 
