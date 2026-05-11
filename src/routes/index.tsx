@@ -310,3 +310,94 @@ function Index() {
     </div>
   );
 }
+
+function DepoimentosSection() {
+  const [index, setIndex] = useState(0);
+  const total = depoimentos.length;
+  const prev = () => setIndex((i) => (i - 1 + total) % total);
+  const next = () => setIndex((i) => (i + 1) % total);
+
+  // visible cards: previous, current, next
+  const visible = [
+    depoimentos[(index - 1 + total) % total],
+    depoimentos[index],
+    depoimentos[(index + 1) % total],
+  ];
+
+  return (
+    <section className="py-28 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,oklch(0.55_0.13_220/0.15),transparent_60%)]" />
+      <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        {/* LEFT: Map + Title */}
+        <div className="text-center lg:text-left">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-4">
+            <span className="text-gradient-gold">Depoimentos</span>{" "}
+            <span className="text-foreground">de quem já passou pelo nosso escritório!</span>
+          </h2>
+          <div className="relative mt-8">
+            <div className="absolute inset-0 bg-teal-gradient opacity-20 blur-3xl rounded-full" />
+            <img
+              src={brasilMap}
+              alt="Mapa do Brasil — atendimento em todo o território nacional"
+              className="relative w-full max-w-md mx-auto lg:mx-0 drop-shadow-2xl"
+            />
+            <p className="font-display text-2xl md:text-3xl mt-6 text-center lg:text-left">
+              Atendimentos em <span className="text-gradient-teal">todo Brasil</span>
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT: Carousel */}
+        <div className="relative">
+          <div className="flex items-center justify-center gap-4 md:gap-6 min-h-[560px]">
+            {visible.map((d, i) => {
+              const isCenter = i === 1;
+              return (
+                <motion.div
+                  key={`${d.name}-${index}-${i}`}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{
+                    opacity: isCenter ? 1 : 0.4,
+                    scale: isCenter ? 1 : 0.82,
+                  }}
+                  transition={{ duration: 0.45 }}
+                  className={`relative rounded-2xl overflow-hidden border ${
+                    isCenter
+                      ? "border-primary/60 shadow-glow z-10"
+                      : "border-border hidden sm:block"
+                  }`}
+                  style={{ width: isCenter ? 280 : 200 }}
+                >
+                  <img src={d.src} alt={`Depoimento ${d.name}`} className="block w-full h-auto" />
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <button
+              onClick={prev}
+              aria-label="Depoimento anterior"
+              className="size-12 rounded-full border border-border bg-card/60 hover:border-primary hover:bg-primary/10 hover:text-primary transition flex items-center justify-center"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <div className="text-sm text-muted-foreground tabular-nums">
+              <span className="text-foreground font-semibold">{String(index + 1).padStart(2, "0")}</span>
+              <span className="mx-2 text-border">/</span>
+              <span>{String(total).padStart(2, "0")}</span>
+            </div>
+            <button
+              onClick={next}
+              aria-label="Próximo depoimento"
+              className="size-12 rounded-full border border-border bg-card/60 hover:border-primary hover:bg-primary/10 hover:text-primary transition flex items-center justify-center"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
