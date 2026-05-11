@@ -414,8 +414,7 @@ function DepoimentosSection() {
   ];
 
   return (
-    <section className="py-28 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,oklch(0.55_0.13_220/0.15),transparent_60%)]" />
+    <section className="py-28 bg-white text-neutral-900 relative overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         {/* LEFT: Map + Title */}
         <div className="text-center lg:text-left">
