@@ -359,6 +359,57 @@ function Index() {
         </div>
       </section>
 
+      {/* ESCRITÓRIOS */}
+      <section className="py-24 bg-white text-neutral-900 border-t border-neutral-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="text-xs uppercase tracking-[0.3em] text-gold">Onde estamos</span>
+            <h2 className="font-display text-3xl md:text-5xl mt-4 text-neutral-900">
+              Nossos <span className="text-gradient-gold">escritórios</span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-10">
+            {[
+              {
+                title: "Escritório na Vogue Square",
+                addr: "Av. das Américas, nº 8585, sala 408 — Barra da Tijuca (Vogue Square), Rio de Janeiro — CEP: 22793-081",
+                img: escritorioVogue,
+                map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.626775815616!2d-43.396071!3d-23.000747999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bdb9c8ccf6ae3%3A0x1cbc132a4be5de15!2sVogue%20Square!5e0!3m2!1spt-BR!2sbr!4v1778522241229!5m2!1spt-BR!2sbr",
+              },
+              {
+                title: "Escritório Campo Grande",
+                addr: "Av. Maria Teresa nº 75, sala 724, 201 e 234, Campo Grande — Rio de Janeiro — CEP: 23050-160",
+                img: escritorioCampoGrande,
+                map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.2443956777024!2d-43.56570180000001!3d-22.9043548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9be3f94c1d0b65%3A0x28b988c2598ef9d5!2sPaulino%20Advocacia!5e0!3m2!1spt-BR!2sbr!4v1778522395730!5m2!1spt-BR!2sbr",
+              },
+            ].map((o) => (
+              <div key={o.title} className="rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-sm">
+                <img src={o.img} alt={o.title} className="w-full h-56 object-cover" loading="lazy" />
+                <div className="p-6">
+                  <h3 className="font-display text-2xl mb-2 text-neutral-900">{o.title}</h3>
+                  <p className="text-sm text-neutral-600 flex gap-2 mb-4">
+                    <MapPin size={16} className="text-gold shrink-0 mt-0.5" />
+                    <span>{o.addr}</span>
+                  </p>
+                  <div className="rounded-xl overflow-hidden border border-neutral-200">
+                    <iframe
+                      src={o.map}
+                      width="100%"
+                      height="260"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={o.title}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="border-t border-border/40 bg-card/40 pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12">
