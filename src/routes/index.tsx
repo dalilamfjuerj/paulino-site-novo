@@ -1,11 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   Scale, Landmark, Building2, Trophy, Briefcase, FileText, Tractor, Shield,
   Phone, Mail, MapPin, MessageCircle, Check, ArrowRight, Star,
+  ChevronLeft, ChevronRight,
 } from "lucide-react";
 import heroImg from "@/assets/hero-paulino.png";
 import drImg from "@/assets/dr-paulino.png";
+import brasilMap from "@/assets/brasil-map.png";
+import dep1 from "@/assets/depoimentos/d1.png";
+import dep3 from "@/assets/depoimentos/d3.png";
+import dep4 from "@/assets/depoimentos/d4.png";
+import dep5 from "@/assets/depoimentos/d5.png";
+import dep6 from "@/assets/depoimentos/d6.png";
+import dep7 from "@/assets/depoimentos/d7.png";
+import dep8 from "@/assets/depoimentos/d8.png";
+import dep8b from "@/assets/depoimentos/d8b.png";
+import dep9 from "@/assets/depoimentos/d9.png";
+import dep10 from "@/assets/depoimentos/d10.png";
+
+const depoimentos = [
+  { src: dep1, name: "Anderson Fernandes" },
+  { src: dep3, name: "Rosinei da Silva" },
+  { src: dep4, name: "Sra. Alessandra" },
+  { src: dep5, name: "Ivonete" },
+  { src: dep6, name: "Kauã" },
+  { src: dep7, name: "Ronald" },
+  { src: dep8, name: "Natan" },
+  { src: dep8b, name: "Raimundo" },
+  { src: dep9, name: "Kionne Teixeira" },
+  { src: dep10, name: "Adriana" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
