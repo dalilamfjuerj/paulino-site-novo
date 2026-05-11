@@ -421,17 +421,16 @@ function DepoimentosSection() {
         <div className="text-center lg:text-left">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-4">
             <span className="text-gradient-gold">Depoimentos</span>{" "}
-            <span className="text-foreground">de quem já passou pelo nosso escritório!</span>
+            <span className="text-neutral-900">de quem já passou pelo nosso escritório!</span>
           </h2>
           <div className="relative mt-8">
-            <div className="absolute inset-0 bg-teal-gradient opacity-20 blur-3xl rounded-full" />
             <img
               src={brasilMap}
               alt="Mapa do Brasil — atendimento em todo o território nacional"
-              className="relative w-full max-w-md mx-auto lg:mx-0 drop-shadow-2xl"
+              className="relative w-full max-w-md mx-auto lg:mx-0 drop-shadow-xl"
             />
-            <p className="font-display text-2xl md:text-3xl mt-6 text-center lg:text-left">
-              Atendimentos em <span className="text-gradient-teal">todo Brasil</span>
+            <p className="font-display text-2xl md:text-3xl mt-6 text-center lg:text-left text-neutral-900">
+              Atendimentos em <span className="text-gradient-gold">todo Brasil</span>
             </p>
           </div>
         </div>
@@ -452,8 +451,8 @@ function DepoimentosSection() {
                   transition={{ duration: 0.45 }}
                   className={`relative rounded-2xl overflow-hidden border ${
                     isCenter
-                      ? "border-primary/60 shadow-glow z-10"
-                      : "border-border hidden sm:block"
+                      ? "border-neutral-300 shadow-elegant z-10"
+                      : "border-neutral-200 hidden sm:block"
                   }`}
                   style={{ width: isCenter ? 280 : 200 }}
                 >
@@ -468,19 +467,19 @@ function DepoimentosSection() {
             <button
               onClick={prev}
               aria-label="Depoimento anterior"
-              className="size-12 rounded-full border border-border bg-card/60 hover:border-primary hover:bg-primary/10 hover:text-primary transition flex items-center justify-center"
+              className="size-12 rounded-full border border-neutral-300 bg-white hover:border-neutral-900 hover:bg-neutral-100 text-neutral-900 transition flex items-center justify-center"
             >
               <ChevronLeft size={20} />
             </button>
-            <div className="text-sm text-muted-foreground tabular-nums">
-              <span className="text-foreground font-semibold">{String(index + 1).padStart(2, "0")}</span>
-              <span className="mx-2 text-border">/</span>
+            <div className="text-sm text-neutral-500 tabular-nums">
+              <span className="text-neutral-900 font-semibold">{String(index + 1).padStart(2, "0")}</span>
+              <span className="mx-2 text-neutral-300">/</span>
               <span>{String(total).padStart(2, "0")}</span>
             </div>
             <button
               onClick={next}
               aria-label="Próximo depoimento"
-              className="size-12 rounded-full border border-border bg-card/60 hover:border-primary hover:bg-primary/10 hover:text-primary transition flex items-center justify-center"
+              className="size-12 rounded-full border border-neutral-300 bg-white hover:border-neutral-900 hover:bg-neutral-100 text-neutral-900 transition flex items-center justify-center"
             >
               <ChevronRight size={20} />
             </button>
