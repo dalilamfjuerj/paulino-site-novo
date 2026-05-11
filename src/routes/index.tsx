@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import heroImg from "@/assets/hero-paulino.png";
 import drImg from "@/assets/dr-paulino.png";
+import escritorioVogue from "@/assets/escritorio-vogue.jpg";
+import escritorioCampoGrande from "@/assets/escritorio-campo-grande.jpg";
 import paulinoLogo from "@/assets/paulino-logo.png";
 import brasilMap from "@/assets/brasil-map.png";
 import dep1 from "@/assets/depoimentos/d1.png";
