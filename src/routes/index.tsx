@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import heroImg from "@/assets/hero-paulino.png";
 import drImg from "@/assets/dr-paulino.png";
+import paulinoLogo from "@/assets/paulino-logo.png";
 import brasilMap from "@/assets/brasil-map.png";
 import dep1 from "@/assets/depoimentos/d1.png";
 import dep3 from "@/assets/depoimentos/d3.png";
@@ -84,9 +85,9 @@ function Index() {
       {/* NAV */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/60 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#top" className="font-display text-xl tracking-wide">
-            <span className="text-gradient-teal">Paulino</span>
-            <span className="text-foreground/80"> Advocacia</span>
+          <a href="#top" className="flex items-center gap-2">
+            <img src={paulinoLogo} alt="Paulino Advocacia" className="h-10 w-auto" />
+            <span className="sr-only">Paulino Advocacia</span>
           </a>
           <nav className="hidden md:flex gap-8 text-sm text-muted-foreground">
             <a href="#sobre" className="hover:text-primary transition">Sobre</a>
@@ -127,14 +128,14 @@ function Index() {
             </div>
             <h1 className="font-display text-5xl md:text-7xl leading-[1.05] mb-8 text-foreground">
               Conheça o escritório especializado que já atendeu mais de{" "}
-              <span className="text-gradient-teal">5.000 clientes</span>{" "}
+              <span className="text-gradient-gold">5.000 clientes</span>{" "}
               com excelência
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
               Na hora de defender seus direitos, experiência, estratégia e confiança fazem toda a diferença.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <a href={WHATSAPP} target="_blank" rel="noopener" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-teal-gradient text-primary-foreground font-semibold tracking-wide shadow-glow hover:scale-[1.03] transition">
+              <a href={WHATSAPP} target="_blank" rel="noopener" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[image:var(--gradient-gold)] text-gold-foreground font-semibold tracking-wide shadow-elegant hover:scale-[1.03] transition">
                 <MessageCircle size={18} />
                 Falar com um advogado
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition" />
