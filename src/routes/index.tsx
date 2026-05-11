@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Scale, Landmark, Building2, Trophy, Briefcase, FileText, Tractor, Shield,
   Phone, Mail, MapPin, MessageCircle, Check, ArrowRight, Star,
@@ -102,39 +102,48 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        {/* Background image full-bleed, centered */}
-        <div className="absolute inset-0">
+      <section id="top" className="relative md:min-h-screen flex flex-col md:items-center md:justify-center overflow-hidden pt-16">
+        {/* MOBILE: photo at top with gradient fade */}
+        <div className="md:hidden relative w-full h-[55vh] -mt-16 pt-16">
+          <img
+            src={drImg}
+            alt="Dr. Fernando Paulino"
+            className="absolute inset-0 w-full h-full object-cover object-top select-none"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-b from-transparent via-background/70 to-background" />
+        </div>
+
+        {/* DESKTOP: full-bleed background */}
+        <div className="hidden md:block absolute inset-0">
           <img
             src={heroImg}
             alt="Dr. Fernando Paulino"
             className="absolute inset-0 w-full h-full object-cover object-center select-none"
           />
-          {/* Dark vignette + teal glow overlays */}
           <div className="absolute inset-0 bg-background/70" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.10_0.025_220/0.7)_80%)]" />
         </div>
 
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-16 md:mt-0 pb-12 md:pb-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur text-primary text-xs uppercase tracking-[0.25em] mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur text-primary text-[10px] md:text-xs uppercase tracking-[0.25em] mb-6 md:mb-8">
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
               Advocacia de Excelência
             </div>
-            <h1 className="font-display text-5xl md:text-7xl leading-[1.05] mb-8 text-foreground">
+            <h1 className="font-display text-3xl md:text-7xl leading-[1.1] md:leading-[1.05] mb-6 md:mb-8 text-foreground">
               Conheça o escritório especializado que já atendeu mais de{" "}
               <span className="text-gradient-gold">5.000 clientes</span>{" "}
               com excelência
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-xl text-muted-foreground mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
               Na hora de defender seus direitos, experiência, estratégia e confiança fazem toda a diferença.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 md:mb-12">
               <a href={WHATSAPP} target="_blank" rel="noopener" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[image:var(--gradient-gold)] text-gold-foreground font-semibold tracking-wide shadow-elegant hover:scale-[1.03] transition">
                 <MessageCircle size={18} />
                 Falar com um advogado
@@ -148,8 +157,8 @@ function Index() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-muted-foreground/60 text-xs uppercase tracking-[0.3em]">
+        {/* Scroll indicator — desktop only */}
+        <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-muted-foreground/60 text-xs uppercase tracking-[0.3em]">
           ↓ Role para baixo
         </div>
       </section>
@@ -404,12 +413,13 @@ function DepoimentosSection() {
   const prev = () => setIndex((i) => (i - 1 + total) % total);
   const next = () => setIndex((i) => (i + 1) % total);
 
-  // visible cards: previous, current, next
-  const visible = [
-    depoimentos[(index - 1 + total) % total],
-    depoimentos[index],
-    depoimentos[(index + 1) % total],
-  ];
+  // Auto-play
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % total), 4000);
+    return () => clearInterval(id);
+  }, [total]);
+
+  const current = depoimentos[index];
 
   return (
     <section className="py-28 bg-white text-neutral-900 relative overflow-hidden">
@@ -424,7 +434,7 @@ function DepoimentosSection() {
             <img
               src={brasilMap}
               alt="Mapa do Brasil — atendimento em todo o território nacional"
-              className="relative w-full max-w-md mx-auto lg:mx-0 drop-shadow-xl"
+              className="relative w-full max-w-md mx-auto lg:mx-0"
             />
             <p className="font-display text-2xl md:text-3xl mt-6 text-center lg:text-left text-neutral-900">
               Atendimentos em <span className="text-gradient-gold">todo Brasil</span>
@@ -434,29 +444,17 @@ function DepoimentosSection() {
 
         {/* RIGHT: Carousel */}
         <div className="relative">
-          <div className="flex items-center justify-center gap-4 md:gap-6 min-h-[560px]">
-            {visible.map((d, i) => {
-              const isCenter = i === 1;
-              return (
-                <motion.div
-                  key={`${d.name}-${index}-${i}`}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{
-                    opacity: isCenter ? 1 : 0.4,
-                    scale: isCenter ? 1 : 0.82,
-                  }}
-                  transition={{ duration: 0.45 }}
-                  className={`relative rounded-2xl overflow-hidden border ${
-                    isCenter
-                      ? "border-neutral-300 shadow-elegant z-10"
-                      : "border-neutral-200 hidden sm:block"
-                  }`}
-                  style={{ width: isCenter ? 280 : 200 }}
-                >
-                  <img src={d.src} alt={`Depoimento ${d.name}`} className="block w-full h-auto" />
-                </motion.div>
-              );
-            })}
+          <div className="flex items-center justify-center min-h-[520px]">
+            <motion.div
+              key={`${current.name}-${index}`}
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="relative rounded-2xl overflow-hidden border border-neutral-300 shadow-elegant"
+              style={{ width: "100%", maxWidth: 420 }}
+            >
+              <img src={current.src} alt={`Depoimento ${current.name}`} className="block w-full h-auto" />
+            </motion.div>
           </div>
 
           {/* Controls */}
@@ -555,7 +553,60 @@ function TeamSection() {
           <p className="text-muted-foreground">Clique em um membro para ver a trajetória completa.</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {/* MOBILE: stacked with inline bio */}
+        <div className="sm:hidden space-y-4">
+          {equipe.map((m, i) => {
+            const active = openIdx === i;
+            return (
+              <div key={m.name}>
+                <button
+                  onClick={() => setOpenIdx(active ? null : i)}
+                  className={`w-full text-left rounded-2xl p-5 border transition-all ${
+                    active
+                      ? "border-primary bg-card shadow-glow"
+                      : "border-border bg-card/50"
+                  }`}
+                  aria-expanded={active}
+                >
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={m.img}
+                      alt={m.name}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-primary/30 shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-lg">{m.name}</h3>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-primary mt-1">{m.role}</p>
+                    </div>
+                    <div className="text-xs text-muted-foreground shrink-0">
+                      {active ? "−" : "+"}
+                    </div>
+                  </div>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: active ? "auto" : 0, opacity: active ? 1 : 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-3 rounded-2xl border border-primary/40 bg-card/60 p-5">
+                    <ul className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                      {m.bio.map((b, j) => (
+                        <li key={j} className="flex gap-3">
+                          <Check size={14} className="text-primary shrink-0 mt-1" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* DESKTOP: grid + shared panel */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {equipe.map((m, i) => {
             const active = openIdx === i;
             return (
@@ -595,7 +646,7 @@ function TeamSection() {
           initial={false}
           animate={{ height: openIdx !== null ? "auto" : 0, opacity: openIdx !== null ? 1 : 0 }}
           transition={{ duration: 0.4 }}
-          className="overflow-hidden"
+          className="overflow-hidden hidden sm:block"
         >
           {openIdx !== null && (
             <div className="rounded-2xl border border-primary/40 bg-card/60 p-8 md:p-10">
