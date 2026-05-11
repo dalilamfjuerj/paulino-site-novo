@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Scale, Landmark, Building2, Trophy, Briefcase, FileText, Tractor, Shield,
   Phone, Mail, MapPin, MessageCircle, Check, ArrowRight, Star,
