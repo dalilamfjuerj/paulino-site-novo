@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   Scale, Landmark, Building2, Trophy, Briefcase, FileText, Tractor, Shield,
   Phone, Mail, MapPin, MessageCircle, Check, ArrowRight, Star,
-  ChevronLeft, ChevronRight,
+  ChevronLeft, ChevronRight, Facebook, Instagram, Linkedin,
 } from "lucide-react";
 import heroImg from "@/assets/hero-paulino.png";
 import drImg from "@/assets/dr-paulino.png";
