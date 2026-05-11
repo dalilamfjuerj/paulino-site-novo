@@ -106,7 +106,7 @@ function Index() {
       {/* HERO — full-width photo at top, gradient fade, text below */}
       <section id="top" className="relative overflow-hidden pt-16 md:pt-0">
         {/* Full-width photo */}
-        <div className="relative w-full h-[54vh] min-h-[430px] md:h-[68vh] md:min-h-[560px]">
+        <div className="relative w-full h-[44vh] min-h-[360px] md:h-[68vh] md:min-h-[560px]">
           <img
             src={heroImg}
             alt="Dr. Fernando Paulino"
