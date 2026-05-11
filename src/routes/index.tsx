@@ -1,11 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   Scale, Landmark, Building2, Trophy, Briefcase, FileText, Tractor, Shield,
   Phone, Mail, MapPin, MessageCircle, Check, ArrowRight, Star,
+  ChevronLeft, ChevronRight,
 } from "lucide-react";
 import heroImg from "@/assets/hero-paulino.png";
 import drImg from "@/assets/dr-paulino.png";
+import brasilMap from "@/assets/brasil-map.png";
+import dep1 from "@/assets/depoimentos/d1.png";
+import dep3 from "@/assets/depoimentos/d3.png";
+import dep4 from "@/assets/depoimentos/d4.png";
+import dep5 from "@/assets/depoimentos/d5.png";
+import dep6 from "@/assets/depoimentos/d6.png";
+import dep7 from "@/assets/depoimentos/d7.png";
+import dep8 from "@/assets/depoimentos/d8.png";
+import dep8b from "@/assets/depoimentos/d8b.png";
+import dep9 from "@/assets/depoimentos/d9.png";
+import dep10 from "@/assets/depoimentos/d10.png";
+
+const depoimentos = [
+  { src: dep1, name: "Anderson Fernandes" },
+  { src: dep3, name: "Rosinei da Silva" },
+  { src: dep4, name: "Sra. Alessandra" },
+  { src: dep5, name: "Ivonete" },
+  { src: dep6, name: "Kauã" },
+  { src: dep7, name: "Ronald" },
+  { src: dep8, name: "Natan" },
+  { src: dep8b, name: "Raimundo" },
+  { src: dep9, name: "Kionne Teixeira" },
+  { src: dep10, name: "Adriana" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -227,31 +253,8 @@ function Index() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="py-28">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-xs uppercase tracking-[0.3em] text-primary">Depoimentos</span>
-            <h2 className="font-display text-4xl md:text-5xl mt-4 mb-4">A confiança de quem já contou com nossa equipe</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Mais do que processos, colecionamos histórias de clientes que encontraram segurança, direcionamento e suporte jurídico em momentos importantes.</p>
-          </div>
+      <DepoimentosSection />
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { n: "Marina S.", r: "Recuperei minha aposentadoria após anos de espera. Atendimento humano e técnico impecável." },
-              { n: "Carlos R.", r: "Renegociação bancária resolvida com clareza. Equipe atenciosa e estratégica do início ao fim." },
-              { n: "Ana P.", r: "Suporte jurídico empresarial completo. Trouxe segurança para todas as decisões da minha empresa." },
-            ].map((t) => (
-              <div key={t.n} className="p-7 rounded-2xl border border-border bg-card/60 hover:shadow-elegant transition">
-                <div className="flex gap-1 mb-4 text-gold">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" strokeWidth={0} />)}
-                </div>
-                <p className="text-foreground/90 leading-relaxed mb-6">"{t.r}"</p>
-                <div className="text-sm text-muted-foreground">— {t.n}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA FINAL */}
       <section id="contato" className="py-28 relative overflow-hidden">
@@ -305,5 +308,96 @@ function Index() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function DepoimentosSection() {
+  const [index, setIndex] = useState(0);
+  const total = depoimentos.length;
+  const prev = () => setIndex((i) => (i - 1 + total) % total);
+  const next = () => setIndex((i) => (i + 1) % total);
+
+  // visible cards: previous, current, next
+  const visible = [
+    depoimentos[(index - 1 + total) % total],
+    depoimentos[index],
+    depoimentos[(index + 1) % total],
+  ];
+
+  return (
+    <section className="py-28 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,oklch(0.55_0.13_220/0.15),transparent_60%)]" />
+      <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        {/* LEFT: Map + Title */}
+        <div className="text-center lg:text-left">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-4">
+            <span className="text-gradient-gold">Depoimentos</span>{" "}
+            <span className="text-foreground">de quem já passou pelo nosso escritório!</span>
+          </h2>
+          <div className="relative mt-8">
+            <div className="absolute inset-0 bg-teal-gradient opacity-20 blur-3xl rounded-full" />
+            <img
+              src={brasilMap}
+              alt="Mapa do Brasil — atendimento em todo o território nacional"
+              className="relative w-full max-w-md mx-auto lg:mx-0 drop-shadow-2xl"
+            />
+            <p className="font-display text-2xl md:text-3xl mt-6 text-center lg:text-left">
+              Atendimentos em <span className="text-gradient-teal">todo Brasil</span>
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT: Carousel */}
+        <div className="relative">
+          <div className="flex items-center justify-center gap-4 md:gap-6 min-h-[560px]">
+            {visible.map((d, i) => {
+              const isCenter = i === 1;
+              return (
+                <motion.div
+                  key={`${d.name}-${index}-${i}`}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{
+                    opacity: isCenter ? 1 : 0.4,
+                    scale: isCenter ? 1 : 0.82,
+                  }}
+                  transition={{ duration: 0.45 }}
+                  className={`relative rounded-2xl overflow-hidden border ${
+                    isCenter
+                      ? "border-primary/60 shadow-glow z-10"
+                      : "border-border hidden sm:block"
+                  }`}
+                  style={{ width: isCenter ? 280 : 200 }}
+                >
+                  <img src={d.src} alt={`Depoimento ${d.name}`} className="block w-full h-auto" />
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <button
+              onClick={prev}
+              aria-label="Depoimento anterior"
+              className="size-12 rounded-full border border-border bg-card/60 hover:border-primary hover:bg-primary/10 hover:text-primary transition flex items-center justify-center"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <div className="text-sm text-muted-foreground tabular-nums">
+              <span className="text-foreground font-semibold">{String(index + 1).padStart(2, "0")}</span>
+              <span className="mx-2 text-border">/</span>
+              <span>{String(total).padStart(2, "0")}</span>
+            </div>
+            <button
+              onClick={next}
+              aria-label="Próximo depoimento"
+              className="size-12 rounded-full border border-border bg-card/60 hover:border-primary hover:bg-primary/10 hover:text-primary transition flex items-center justify-center"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
