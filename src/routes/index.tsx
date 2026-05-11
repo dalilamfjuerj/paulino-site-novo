@@ -33,6 +33,18 @@ const depoimentos = [
   { src: dep10, name: "Adriana" },
 ];
 
+import parceiroSeven from "@/assets/parceiros/seven.png";
+import parceiroBitribut from "@/assets/parceiros/bitribut.png";
+import parceiroEfagro from "@/assets/parceiros/efagro.png";
+import parceiroHub from "@/assets/parceiros/hub-botafogo.png";
+
+const parceiros = [
+  { src: parceiroHub, name: "Hub Botafogo" },
+  { src: parceiroEfagro, name: "EFAGRO" },
+  { src: parceiroBitribut, name: "Bitribut" },
+  { src: parceiroSeven, name: "Seven Ambiental" },
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
