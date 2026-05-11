@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import heroImg from "@/assets/hero-paulino.png";
 import drImg from "@/assets/dr-paulino.png";
+import paulinoLogo from "@/assets/paulino-logo.png";
 import brasilMap from "@/assets/brasil-map.png";
 import dep1 from "@/assets/depoimentos/d1.png";
 import dep3 from "@/assets/depoimentos/d3.png";
@@ -84,9 +85,9 @@ function Index() {
       {/* NAV */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/60 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#top" className="font-display text-xl tracking-wide">
-            <span className="text-gradient-teal">Paulino</span>
-            <span className="text-foreground/80"> Advocacia</span>
+          <a href="#top" className="flex items-center gap-2">
+            <img src={paulinoLogo} alt="Paulino Advocacia" className="h-10 w-auto" />
+            <span className="sr-only">Paulino Advocacia</span>
           </a>
           <nav className="hidden md:flex gap-8 text-sm text-muted-foreground">
             <a href="#sobre" className="hover:text-primary transition">Sobre</a>
@@ -127,14 +128,14 @@ function Index() {
             </div>
             <h1 className="font-display text-5xl md:text-7xl leading-[1.05] mb-8 text-foreground">
               Conheça o escritório especializado que já atendeu mais de{" "}
-              <span className="text-gradient-teal">5.000 clientes</span>{" "}
+              <span className="text-gradient-gold">5.000 clientes</span>{" "}
               com excelência
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
               Na hora de defender seus direitos, experiência, estratégia e confiança fazem toda a diferença.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <a href={WHATSAPP} target="_blank" rel="noopener" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-teal-gradient text-primary-foreground font-semibold tracking-wide shadow-glow hover:scale-[1.03] transition">
+              <a href={WHATSAPP} target="_blank" rel="noopener" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[image:var(--gradient-gold)] text-gold-foreground font-semibold tracking-wide shadow-elegant hover:scale-[1.03] transition">
                 <MessageCircle size={18} />
                 Falar com um advogado
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition" />
@@ -272,24 +273,24 @@ function Index() {
 
 
       {/* PARCEIROS */}
-      <section id="parceiros" className="py-20 border-y border-border/40 bg-card/30">
+      <section id="parceiros" className="py-20 bg-white text-neutral-900">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-[0.3em] text-primary">Parceiros</span>
-            <h2 className="font-display text-3xl md:text-4xl mt-3">
-              Empresas que <span className="text-gradient-teal">confiam</span> em nosso trabalho
+            <span className="text-xs uppercase tracking-[0.3em] text-neutral-500">Parceiros</span>
+            <h2 className="font-display text-3xl md:text-4xl mt-3 text-neutral-900">
+              Empresas que <span className="text-gradient-gold">confiam</span> em nosso trabalho
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {parceiros.map((p) => (
               <div
                 key={p.name}
-                className="group relative h-28 rounded-2xl border border-border bg-background/60 hover:border-primary/50 hover:bg-background transition flex items-center justify-center p-6"
+                className="group relative h-28 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 transition flex items-center justify-center p-6"
               >
                 <img
                   src={p.src}
                   alt={p.name}
-                  className="max-h-16 max-w-full object-contain opacity-70 group-hover:opacity-100 transition"
+                  className="max-h-16 max-w-full object-contain opacity-80 group-hover:opacity-100 transition"
                   loading="lazy"
                 />
               </div>
@@ -367,9 +368,7 @@ function Index() {
       <footer className="border-t border-border/40 bg-card/40 pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12">
           <div>
-            <div className="font-display text-2xl mb-4">
-              <span className="text-gradient-teal">Paulino</span> Advocacia
-            </div>
+            <img src={paulinoLogo} alt="Paulino Advocacia" className="h-16 w-auto mb-4" />
             <p className="text-sm text-muted-foreground italic">"Compromisso com excelência, integridade e resultados."</p>
           </div>
 
@@ -413,24 +412,22 @@ function DepoimentosSection() {
   ];
 
   return (
-    <section className="py-28 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,oklch(0.55_0.13_220/0.15),transparent_60%)]" />
+    <section className="py-28 bg-white text-neutral-900 relative overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         {/* LEFT: Map + Title */}
         <div className="text-center lg:text-left">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-4">
             <span className="text-gradient-gold">Depoimentos</span>{" "}
-            <span className="text-foreground">de quem já passou pelo nosso escritório!</span>
+            <span className="text-neutral-900">de quem já passou pelo nosso escritório!</span>
           </h2>
           <div className="relative mt-8">
-            <div className="absolute inset-0 bg-teal-gradient opacity-20 blur-3xl rounded-full" />
             <img
               src={brasilMap}
               alt="Mapa do Brasil — atendimento em todo o território nacional"
-              className="relative w-full max-w-md mx-auto lg:mx-0 drop-shadow-2xl"
+              className="relative w-full max-w-md mx-auto lg:mx-0 drop-shadow-xl"
             />
-            <p className="font-display text-2xl md:text-3xl mt-6 text-center lg:text-left">
-              Atendimentos em <span className="text-gradient-teal">todo Brasil</span>
+            <p className="font-display text-2xl md:text-3xl mt-6 text-center lg:text-left text-neutral-900">
+              Atendimentos em <span className="text-gradient-gold">todo Brasil</span>
             </p>
           </div>
         </div>
@@ -451,8 +448,8 @@ function DepoimentosSection() {
                   transition={{ duration: 0.45 }}
                   className={`relative rounded-2xl overflow-hidden border ${
                     isCenter
-                      ? "border-primary/60 shadow-glow z-10"
-                      : "border-border hidden sm:block"
+                      ? "border-neutral-300 shadow-elegant z-10"
+                      : "border-neutral-200 hidden sm:block"
                   }`}
                   style={{ width: isCenter ? 280 : 200 }}
                 >
@@ -467,19 +464,19 @@ function DepoimentosSection() {
             <button
               onClick={prev}
               aria-label="Depoimento anterior"
-              className="size-12 rounded-full border border-border bg-card/60 hover:border-primary hover:bg-primary/10 hover:text-primary transition flex items-center justify-center"
+              className="size-12 rounded-full border border-neutral-300 bg-white hover:border-neutral-900 hover:bg-neutral-100 text-neutral-900 transition flex items-center justify-center"
             >
               <ChevronLeft size={20} />
             </button>
-            <div className="text-sm text-muted-foreground tabular-nums">
-              <span className="text-foreground font-semibold">{String(index + 1).padStart(2, "0")}</span>
-              <span className="mx-2 text-border">/</span>
+            <div className="text-sm text-neutral-500 tabular-nums">
+              <span className="text-neutral-900 font-semibold">{String(index + 1).padStart(2, "0")}</span>
+              <span className="mx-2 text-neutral-300">/</span>
               <span>{String(total).padStart(2, "0")}</span>
             </div>
             <button
               onClick={next}
               aria-label="Próximo depoimento"
-              className="size-12 rounded-full border border-border bg-card/60 hover:border-primary hover:bg-primary/10 hover:text-primary transition flex items-center justify-center"
+              className="size-12 rounded-full border border-neutral-300 bg-white hover:border-neutral-900 hover:bg-neutral-100 text-neutral-900 transition flex items-center justify-center"
             >
               <ChevronRight size={20} />
             </button>
