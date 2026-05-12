@@ -104,20 +104,20 @@ function Index() {
       </header>
 
       {/* HERO — full-width photo at top, gradient fade, text below */}
-      <section id="top" className="relative overflow-hidden pt-16 md:pt-0">
-        {/* Full-width photo */}
-        <div className="relative w-full h-[55vh] min-h-[450px] md:h-auto md:min-h-0 md:aspect-video">
+      <section id="top" className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-end overflow-hidden pt-16 md:pt-0 bg-background">
+        {/* Background Photo */}
+        <div className="absolute inset-0 z-0 flex justify-center">
           <img
             src={heroImg}
             alt="Dr. Fernando Paulino"
-            className="absolute inset-0 w-full h-full object-cover object-[center_top] select-none"
+            className="w-full h-full object-cover object-[center_top] md:object-contain select-none"
           />
           {/* Gradient fade into background */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-transparent via-background/80 to-background pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-[60%] md:h-1/2 bg-gradient-to-b from-transparent via-background/80 to-background pointer-events-none" />
         </div>
 
         {/* Text below the photo */}
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center -mt-24 md:-mt-32 lg:-mt-48 pb-10 md:pb-24">
+        <div className="relative z-10 w-full max-w-3xl mx-auto px-6 text-center pb-12 md:pb-16 lg:pb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
