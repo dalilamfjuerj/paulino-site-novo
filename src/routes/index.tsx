@@ -6,7 +6,7 @@ import {
   Phone, Mail, MapPin, MessageCircle, Check, ArrowRight, Star,
   ChevronLeft, ChevronRight, Facebook, Instagram, Linkedin,
 } from "lucide-react";
-import heroImg from "@/assets/hero-novo.png";
+import heroImg from "@/assets/hero-desktop.png";
 import drImg from "@/assets/dr-paulino.png";
 import escritorioVogue from "@/assets/escritorio-vogue.jpg";
 import escritorioCampoGrande from "@/assets/escritorio-campo-grande.jpg";
