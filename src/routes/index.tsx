@@ -104,20 +104,23 @@ function Index() {
       </header>
 
       {/* HERO — full-width photo at top, gradient fade, text below */}
-      <section id="top" className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-end overflow-hidden pt-16 md:pt-0 bg-background">
+      <section id="top" className="relative w-full min-h-[100svh] flex flex-col justify-end pt-16 md:pt-0 bg-background">
         {/* Background Photo */}
-        <div className="absolute inset-0 z-0 flex justify-center">
+        <div className="absolute inset-x-0 top-0 z-0 h-[65vh] md:h-[75vh] flex justify-center">
           <img
             src={heroImg}
             alt="Dr. Fernando Paulino"
-            className="w-full h-full object-cover object-[center_top] md:object-contain select-none"
+            className="w-full h-full object-cover object-[center_top] select-none"
           />
           {/* Gradient fade into background */}
           <div className="absolute inset-x-0 bottom-0 h-[60%] md:h-1/2 bg-gradient-to-b from-transparent via-background/80 to-background pointer-events-none" />
         </div>
 
+        {/* Spacer to push text below the image */}
+        <div className="w-full h-[38vh] md:h-[42vh] shrink-0 pointer-events-none" />
+
         {/* Text below the photo */}
-        <div className="relative z-10 w-full max-w-3xl mx-auto px-6 text-center pb-12 md:pb-16 lg:pb-20">
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center pb-12 md:pb-16 lg:pb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,7 +130,7 @@ function Index() {
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
               Advocacia de Excelência
             </div>
-            <h1 className="font-display text-[2rem] md:text-6xl leading-[1.12] md:leading-[1.05] mb-6 md:mb-8 text-foreground">
+            <h1 className="font-display text-[2rem] md:text-5xl leading-tight md:leading-[0.95] mb-6 md:mb-8 text-foreground mx-auto max-w-4xl">
               Conheça o escritório especializado que já atendeu mais de{" "}
               <span className="text-gradient-gold">5.000 clientes</span>{" "}
               com excelência
