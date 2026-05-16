@@ -126,7 +126,7 @@ function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/40 bg-primary/15 backdrop-blur text-primary text-[10px] md:text-xs uppercase tracking-[0.25em] mb-6 md:mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/40 bg-black text-primary text-[10px] md:text-xs uppercase tracking-[0.25em] mb-6 md:mb-8">
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
               Advocacia de Excelência
             </div>
